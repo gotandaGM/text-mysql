@@ -1,2 +1,2 @@
-# casual-mysql
+# text-mysql
 新人さん向けのMySQL資料
