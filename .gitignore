@@ -1,1 +1,3 @@
 *.swp
+cpanfile.snapshot
+local/
