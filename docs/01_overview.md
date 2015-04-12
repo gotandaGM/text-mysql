@@ -11,7 +11,7 @@
 
 扱うデータの性質によって、向き不向きがあります。
 
-以下のようなデータモデルがある。
+以下のようなデータモデルがあります。
 
 - 階層型
 - ネットワーク型
@@ -184,13 +184,16 @@ MySQLではストレージエンジンをテーブル毎に用途に合わせて
 - 第五正規形までそれそれどんなものであるか?
 - MySQL以外のデータベース製品の特長とユースケースはなんだろうか?
 - InnoDBとMyISAMの他にどんなストレージエンジンがあるのか?そしてどういう特徴があるのか?
+- ロックには排他ロック/共有ロックがあるがどのようなものだろうか?
 - トランザクションシステムが満たすべき要件としてACID要件があるがそれはどんなものか?
 
 
 ## リソース
 
-- [MySQLのロックについて](http://d.hatena.ne.jp/sh2/20140914)
-- [MySQL Casual Advent Calendar 2011](http://mysql-casual.org/2011/11/mysql-casual-advent-calendar-2011.html)
-- [MySQL Casual Advent Calendar 2013](http://www.zusaar.com/event/1847003)
-- [MySQL Casual Advent Calendar 2014](http://qiita.com/advent-calendar/2014/mysql-casual)
+- Web
+    - [MySQLのロックについて](http://d.hatena.ne.jp/sh2/20140914)
+    - [MySQL Casual Advent Calendar 2011](http://mysql-casual.org/2011/11/mysql-casual-advent-calendar-2011.html)
+    - [MySQL Casual Advent Calendar 2013](http://www.zusaar.com/event/1847003)
+    - [MySQL Casual Advent Calendar 2014](http://qiita.com/advent-calendar/2014/mysql-casual)
 
+- 書籍
