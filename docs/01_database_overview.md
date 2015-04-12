@@ -19,9 +19,21 @@
 - オブジェクト
 - カード型
 
+今回扱うMySQLはリレーショナルモデルを扱うデータベースである。
+
 ## リレーショナルモデル
 
 TODO: 簡単な言及が必要
+
+
+リレーショナルデータベースとしては以下のものがある。
+
+- MySQL / MariaDB
+- PostgreSQL
+- MycroSoft SQL Serevr
+- Oracle Database
+- H2 Database
+
 
 ## SQL(えす･きゅー･える/しーくぇる)
 
