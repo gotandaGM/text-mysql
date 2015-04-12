@@ -16,4 +16,3 @@
 - [facebook](https://www.facebook.com/masasuz)
 - [github](https://github.com/masasuzu/)
 - [cpan](https://metacpan.org/author/MASASUZU)
-- [eventer note](http://www.eventernote.com/users/masasuzu_o)
