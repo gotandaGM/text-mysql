@@ -63,21 +63,58 @@ TODO: 記述が足りない
 
 ## MySQL(まい･えす･きゅー･える)
 
-MySQLはリレーショナルモデルで表現されており、SQL言語によって操作する。データベースである。
-オープンソースであり、GNU GPLと商用ライセンスを採用している。
+MySQLはリレーショナルモデルで表現されており、SQL言語によって操作できるデータベースです。
+オープンソースであり、GNU GPLと商用ライセンスを採用しています。
 
-開発元はMySQL AB => Sun Microsystems => Oracleと変遷している。
-MySQLのフォークとしてMariaDBというデータベースシステムも存在する。
+開発元はMySQL AB => Sun Microsystems => Oracleと変遷しました。
+MySQLのフォークとしてMariaDBというデータベースシステムも存在します。
 
-TODO: 記述が足りない
+現在のところWebサービスで広く使われているデータベースシステムです。
 
 ### ストレージエンジン
 
+MySQLではストレージエンジンをテーブル毎に用途に合わせて差し替えることが出来ます。
+特別な用途がなければ基本的にはInnoDBを使います。
 
-TODO: MyISAMのことを書く
+`SHOW ENGIES` で利用できるストレージエンジンが確認できます。
 
-TODO: InnoDBのことを書く
+```
+> SHOW ENGINES;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+```
 
+### InnoDBとMyISAM
+
+広く使われているストレージエンジンはInnoDBとMyISAMです。
+現在ではInnoDBが基本的に使用されています。
+特殊な用途や古いシステム以外ではMyISAMは使われないです。
+
+- InnoDB
+    - 5.5以降のデフォルトのストレージエンジン
+    - MySQL 5.5からデフォルトのストレージエンジン
+    - トランザクション可能
+    - 読み込み処理でロックを行わない
+    - 行ロックが可能
+    - 外部キーをサポート
+    - 主キーによるルックアップが高速
+- MyISAM
+    - MySQL 5.1までのデフォルトのストレージエンジン
+    - テーブル全体をロックする
+    - トランザクション処理が不可能
+
+## ロックとトランザクション
 
 ## 発展
 
