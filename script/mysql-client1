@@ -1,5 +1,5 @@
 #/usr/bin/env bash
 set -e
 cd $(dirname $0)
-mysql --defaults-extra-file=../etc/my1.cnf --user=root
+mysql --defaults-extra-file=../etc/my1.cnf --user=root $1
 
