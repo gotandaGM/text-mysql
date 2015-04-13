@@ -1,3 +1,2 @@
 [mysql]
-prompt='[client2] \\u: [\\d] \\r:\\m \\P> '
-
+prompt='[33m[client2][0m \\u: [\\d] \\r:\\m \\P> '
