@@ -42,6 +42,7 @@ mpstat -P ALL 5
 ```
 
 ### 過去の統計を見る
+
 `sysstat`が入っていれば、`sar`コマンドで過去の負荷統計を確認することができます。
 
 ```sh
@@ -52,6 +53,8 @@ sar -r
 # Load average
 sar -q
 ```
+
+過去の統計情報は[Cloudforecast](https://github.com/kazeburo/cloudforecast)などのグラフツールでリソース監視していると思うので、そちらを見てもよいです。
 
 ## ログを仕込む
 
@@ -64,7 +67,7 @@ sar -q
 
 ### アプリケーションにプロファイラーを仕込む
 
-プロファイラーを仕込んでどの処理に時間がかかってるのか分かるようにします。perlなら`Devel::KYTProf`や`Devel::NYTProf`など。
+プロファイラーを仕込んでどの処理に時間がかかってるのか分かるようにします。perlなら[Devel::KYTProf](https://metacpan.org/pod/Devel::KYTProf)や[Devel::NYTProf](https://metacpan.org/pod/Devel::NYTProf)など。
 
 ※プロファイラーを仕込むとアプリケーションの速度が遅くなるので、本番に仕込むときはよく考えましょう。
 
