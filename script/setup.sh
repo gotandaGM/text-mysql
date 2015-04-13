@@ -4,9 +4,8 @@ set -e
 mysql -uroot -hlocalhost <<__EOF__
 SET GLOBAL sql_mode='TRADITIONAL';
 
-CREATE DATABASE IF NOT EXISTS 2015_training_lock;
-USE 2015_training_lock;
-
+CREATE DATABASE IF NOT EXISTS 2015_training_01;
+USE 2015_training_01;
 
 DROP TABLE IF EXISTS user_hit_points;
 CREATE TABLE user_hit_points (
@@ -35,8 +34,8 @@ INSERT INTO
     ('USER_B', 300000)
     ;
 
-CREATE DATABASE IF NOT EXISTS 2015_training;
-USE 2015_training;
+CREATE DATABASE IF NOT EXISTS 2015_training_02;
+USE 2015_training_02;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (

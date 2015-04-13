@@ -1,6 +1,6 @@
 -- ##################################
 -- client 1 に切り替え
-USE 2015_training_lock;
+USE 2015_training_01;
 SELECT * FROM user_balances;
 BEGIN WORK;
 
