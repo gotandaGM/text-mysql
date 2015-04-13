@@ -108,9 +108,10 @@ mysqldumpslow /var/log/slow-log
 - クエリの問題
 - インデックスの問題
 
-のあたりを書く
+## リソース
 
-## チューニング演習
-
-TODO:
-
+- 書籍
+    - [実践ハイパフォーマンスMySQL 第3版](http://www.amazon.co.jp/dp/4873116384)
+    - [エキスパートのためのMySQL[運用+管理]トラブルシューティングガイド](http://www.amazon.co.jp/dp/4774142948)
+    - [SQLアンチパターン ](http://www.amazon.co.jp/dp/4873115892/)
+    - [MySQLトラブルシューティング](http://www.amazon.co.jp/dp/4873115868/)
