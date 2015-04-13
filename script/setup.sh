@@ -4,28 +4,62 @@ set -e
 mysql -uroot -hlocalhost <<__EOF__
 SET GLOBAL sql_mode='TRADITIONAL';
 
+CREATE DATABASE IF NOT EXISTS 2015_training_lock;
+USE 2015_training_lock;
+
+
+DROP TABLE IF EXISTS user_hit_points;
+CREATE TABLE user_hit_points (
+    user_name       VARCHAR(255)    NOT NULL PRIMARY KEY,
+    hit_point       INT UNSIGNED    NOT NULL,
+    max_hit_point   INT UNSIGNED    NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO
+    user_hit_points (user_name, hit_point, max_hit_point)
+    VALUES
+    ('USER_A', 100, 300),
+    ('USER_B', 300, 300)
+    ;
+
+DROP TABLE IF EXISTS user_balances;
+CREATE TABLE user_balances (
+    user_name       VARCHAR(255)    NOT NULL PRIMARY KEY,
+    balance         INT UNSIGNED    NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO
+    user_balances (user_name, balance)
+    VALUES
+    ('USER_A', 100000),
+    ('USER_B', 300000)
+    ;
+
 CREATE DATABASE IF NOT EXISTS 2015_training;
 USE 2015_training;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-    user_id         INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    department_id   INT             NOT NULL,
+    user_id         INT UNSIGNED    NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    department_id   INT UNSIGNED    NOT NULL,
     name            VARCHAR(255)    NOT NULL,
-    age             INT             NOT NULL,
+    age             INT UNSIGNED    NOT NULL,
     sex             ENUM('FEMALE', 'MALE', 'OTHER') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS departments;
 CREATE TABLE departments (
-    department_id   INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    department_id   INT UNSIGNED    NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name            VARCHAR(255)    NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO
     departments (name)
     VALUES
-    ('開発部'), ('営業部'), ('総務部');
+    ('開発部'),
+    ('営業部'),
+    ('総務部')
+    ;
 
 INSERT INTO
     users (department_id, name, age, sex)
