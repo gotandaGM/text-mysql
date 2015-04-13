@@ -1,0 +1,5 @@
+#/usr/bin/env bash
+set -e
+cd $(dirname $0)
+mysql --defaults-extra-file=../etc/my.cnf --user=root
+
