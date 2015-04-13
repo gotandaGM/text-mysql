@@ -48,12 +48,34 @@ CREATE TABLE departments (
     name            VARCHAR(255)    NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS titles;
+CREATE TABLE titles (
+    title_id        INT UNSIGNED    NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(255)    NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS user_titles;
+CREATE TABLE user_titles (
+    user_id         INT UNSIGNED    NOT NULL,
+    title_id        INT UNSIGNED    NOT NULL,
+    PRIMARY KEY user_title(user_id, title_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO
     departments (name)
     VALUES
     ('開発部'),
     ('営業部'),
     ('総務部')
+    ;
+
+INSERT INTO
+    titles (name)
+    VALUES
+    ('チーフ'),
+    ('リーダー'),
+    ('シニア'),
+    ('アドバンスドシニア')
     ;
 
 INSERT INTO
@@ -93,6 +115,20 @@ INSERT INTO
     (3, 'たけたし', 33, 'MALE'),
     (3, 'ゆう',     23, 'FEMALE'),
     (3, 'ゆうき',   19, 'FEMALE')
+    ;
+
+
+INSERT INTO
+    user_titles (user_id, title_id)
+    VALUES
+    (1, 1),
+    (6, 1),
+    (5, 1),
+    (8, 1),
+    (9, 1),
+    (7, 2),
+    (2, 2),
+    (15, 3)
     ;
 
 

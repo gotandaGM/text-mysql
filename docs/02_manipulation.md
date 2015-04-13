@@ -100,6 +100,37 @@ SELECT
     ;
 ```
 
+### INNER JOIN / OUTER JOIN
+
+```sql
+SELECT users.name, age, sex, departments.name, titles.name
+    FROM users
+    INNER JOIN departments
+        ON users.department_id=departments.department_id
+    INNER JOIN user_titles
+        ON users.user_id=user_titles.user_id
+    INNER JOIN titles
+        ON user_titles.title_id=titles.title_id
+
+SELECT users.name, age, sex, departments.name, titles.name
+    FROM users
+    INNER JOIN departments
+        ON users.department_id=departments.department_id
+    INNER JOIN user_titles
+        ON users.user_id=user_titles.user_id
+    RIGHT OUTER JOIN titles
+        ON user_titles.title_id=titles.title_id
+
+SELECT users.name, age, sex, departments.name, titles.name
+    FROM users
+    INNER JOIN departments
+        ON users.department_id=departments.department_id
+    LEFT OUTER JOIN user_titles
+        ON users.user_id=user_titles.user_id
+    LEFT OUTER JOIN titles
+        ON user_titles.title_id=titles.title_id
+```
+
 ## UPDATE
 
 ```sql
