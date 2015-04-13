@@ -131,4 +131,15 @@ INSERT INTO
     (15, 3)
     ;
 
+CREATE DATABASE IF NOT EXISTS 2015_training_03;
+USE 2015_training_03;
 
+
+DROP TABLE IF EXISTS score;
+CREATE TABLE score (
+    student_name    VARCHAR(512)    NOT NULL,
+    class_name      VARCHAR(64)     NOT NULL,
+    grade           VARCHAR(64)     NOT NULL,
+    score           VARCHAR(64)     NOT NULL,
+    PRIMARY KEY student_class(student_name, class_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
