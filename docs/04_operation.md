@@ -1,4 +1,4 @@
 # MySQL運用
 
-TODO:
+TODO: たぶんやらない
 

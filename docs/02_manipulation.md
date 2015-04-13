@@ -184,4 +184,5 @@ mysql client上で`edit`と打つとエディターが立ち上がります。
 
 - Web
     - [MySQLのプロンプトを変更する。](http://nippondanji.blogspot.jp/2009/03/mysql.html)
+    - [快適mysqlコマンド★カスタマイズの決定版](http://d.hatena.ne.jp/hirose31/20131225/1387942323)
 
