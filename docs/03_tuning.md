@@ -104,6 +104,67 @@ log_queries_not_using_indexes
 ```sh
 mysqldumpslow /var/log/slow-log
 ```
+[percona-toolkit](http://www.percona.com/software/percona-toolkit)の[pt-query-digest](http://www.percona.com/doc/percona-toolkit/2.2/pt-query-digest.html)を使うともっと便利に解析出来ます。
+
+## EXPLAIN
+
+`EXPLAIN`を使うことによってMySQLのクエリ実行計画を見ることができます。
+slowlogで出力されたクエリを`EXPLAIN`を通して調べるのが定石です。
+
+```sql
+mysql> EXPLAIN SELECT * FROM users WHERE user_id=1;
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+| id | select_type | table | type  | possible_keys | key     | key_len | ref   | rows | Extra |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+|  1 | SIMPLE      | users | const | PRIMARY       | PRIMARY | 4       | const |    1 | NULL  |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+1 row in set (0.01 sec)
+
+mysql> EXPLAIN SELECT * FROM users;
++----+-------------+-------+------+---------------+------+---------+------+------+-------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra |
++----+-------------+-------+------+---------------+------+---------+------+------+-------+
+|  1 | SIMPLE      | users | ALL  | NULL          | NULL | NULL    | NULL |   34 | NULL  |
++----+-------------+-------+------+---------------+------+---------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> EXPLAIN SELECT * FROM users ORDER BY RAND();
++----+-------------+-------+------+---------------+------+---------+------+------+---------------------------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra                           |
++----+-------------+-------+------+---------------+------+---------+------+------+---------------------------------+
+|  1 | SIMPLE      | users | ALL  | NULL          | NULL | NULL    | NULL |   34 | Using temporary; Using filesort |
++----+-------------+-------+------+---------------+------+---------+------+------+---------------------------------+
+1 row in set (0.01 sec)
+
+```
+
+それぞれに意味はありますが、まず気にする場所は`type`と`rows`、`Extra`です。
+
+### type
+
+`type`はアクセスする方法です。ここが`index`(フルインデックススキャン)または`ALL`(フルテーブルスキャン)であった場合は、改善を検討した方が良いでしょう。
+
+### rows
+
+`rows`はテーブルからフェッチされる行数の見積もりです。大まかな見積もりです。結果として返る行数と比べ多かったり、そもそも行数多すぎる場合、注意した方が良いでしょう。インデックスが適切に使われてない可能性があります。
+
+### Extra
+
+`Extra`はそのたの追加情報です。重要なヒントが書かれているので、見逃せません。
+
+- Using where
+    - whereの条件に一致する行をインデックスだけで解決できなかったことを示します。
+    - インデックスが適切に使われているのであれば、気にしないでよいですが、`rows`が多いときは注意した方が良いです。
+- Using filesort
+    - インデックスの順序を使えずに、フェッチしてから並び替えたことを示します。
+    - `rows`が多いときは注意した方が良いです。
+- Using temporary
+    - クエリ実行にテンポラリテーブルが必要なことを示します。
+- Using index
+    - クエリがインデックスにアクセスするだけで解決出来たことを示します。高速です。
+
+
+[MySQL操作](02_manipulation.md)に書かれてるクエリを`EXPLAIN`にかけてみて結果を見てみましょう。
 
 ## チューニングの勘所
 
@@ -117,6 +178,9 @@ mysqldumpslow /var/log/slow-log
     - またはループの外でクエリを発行してアプリケーション
 - テンプレートエンジン内の処理でクエリを発行してる
     - 気づきにくいので避ける
+- トランザクションの範囲が広すぎる
+    - ロック開放待ちが増える可能性があります
+    - 適切な粒度でトランザクションかけましょう
 
 ### クエリの問題
 
@@ -130,12 +194,12 @@ mysqldumpslow /var/log/slow-log
     - データサイズが無駄に大きくなる
     - 更新速度が遅くなる
 
-## EXPLAIN
 
-## InnoDBのインデックス
 
 ## リソース
-
+- Web
+    - [chiba.pm 2回目に行ってきた #chibapm](http://masasuzu.hatenablog.jp/entry/entry/2013/03/23/chiba.pm2) (pt-query-digestの話)
+    - [MySQLのEXPLAINを徹底解説!!](http://nippondanji.blogspot.jp/2009/03/mysqlexplain.html)
 - 書籍
     - [実践ハイパフォーマンスMySQL 第3版](http://www.amazon.co.jp/dp/4873116384)
     - [エキスパートのためのMySQL[運用+管理]トラブルシューティングガイド](http://www.amazon.co.jp/dp/4774142948)
