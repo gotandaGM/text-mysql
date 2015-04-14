@@ -39,7 +39,8 @@ CREATE TABLE users (
     department_id   INT UNSIGNED    NOT NULL,
     name            VARCHAR(255)    NOT NULL,
     age             INT UNSIGNED    NOT NULL,
-    sex             ENUM('FEMALE', 'MALE', 'OTHER') NOT NULL
+    sex             ENUM('FEMALE', 'MALE', 'OTHER') NOT NULL,
+    INDEX           department_id (department_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS departments;
@@ -137,7 +138,7 @@ USE 2015_training_03;
 
 DROP TABLE IF EXISTS score;
 CREATE TABLE score (
-    student_name    VARCHAR(512)    NOT NULL,
+    student_name    VARCHAR(64)     NOT NULL,
     class_name      VARCHAR(64)     NOT NULL,
     grade           VARCHAR(64)     NOT NULL,
     score           VARCHAR(64)     NOT NULL,
