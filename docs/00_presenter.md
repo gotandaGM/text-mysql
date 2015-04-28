@@ -5,7 +5,7 @@
 - モバイルコンテンツ事業部 兼 ソーシャルアプリ事業部 シニアエンジニア
     - 社内システム開発
     - 開発/運用基盤整備
-- perl / zsh / mysql / debian / ubuntu / i☆Ris / μ's
+- perl / zsh / mysql / debian / ubuntu
 
 
 - [about me](https://about.me/masasuzu)
