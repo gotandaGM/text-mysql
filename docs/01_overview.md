@@ -397,6 +397,7 @@ InnoDBのデフォルトのインデックスはB+Treeです。
     - [MySQL Casual Advent Calendar 2011](http://mysql-casual.org/2011/11/mysql-casual-advent-calendar-2011.html)
     - [MySQL Casual Advent Calendar 2013](http://www.zusaar.com/event/1847003)
     - [MySQL Casual Advent Calendar 2014](http://qiita.com/advent-calendar/2014/mysql-casual)
+    - [リレーショナル・データベースの世界](http://www.geocities.jp/mickindex/database/idx_database.html)
     - [MySQLのロックについて](http://d.hatena.ne.jp/sh2/20140914)
     - [InnoDBのロックの範囲とネクストキーロックの話](http://blog.kamipo.net/entry/2013/12/03/235900)
     - [知って得するInnoDBセカンダリインデックス活用術！](http://nippondanji.blogspot.jp/2010/10/innodb.html)
