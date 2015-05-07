@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS user_hit_points;
 CREATE TABLE user_hit_points (
     user_name       VARCHAR(255)    NOT NULL PRIMARY KEY,
     hit_point       INT UNSIGNED    NOT NULL,
-    max_hit_point   INT UNSIGNED    NOT NULL
+    max_hit_point   INT UNSIGNED    NOT NULL,
+    status          ENUM('normal', 'poison') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO
