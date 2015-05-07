@@ -99,8 +99,8 @@ select MAX(age) from users;
 
 集約関数には以下のものがあります。
 
-- SUM() 合計
-- AVG() 平均
+- SUM() 総和
+- COUNT() 総数
 - MAX() 最大値
 - MIN() 最小値
 - AVG() 平均値
